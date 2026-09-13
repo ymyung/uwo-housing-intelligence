@@ -1,0 +1,65 @@
+name: uwo-housing-dev
+
+services:
+  postgres:
+    image: uwo-postgres-postgis:15
+    build:
+      context: .
+      dockerfile: docker/postgres/Dockerfile
+    container_name: uwo-postgres-dev
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-uwo}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in config/local-dev.env}
+      POSTGRES_DB: ${POSTGRES_DB:-uwo_housing_dev}
+    ports:
+      - "127.0.0.1:55600:5432"
+    volumes:
+      - uwo-postgres-dev-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+      start_period: 5s
+    restart: "no"
+
+  otp:
+    image: opentripplanner/opentripplanner:2.6.0
+    container_name: uwo-otp-router
+    command: ["--load", "--serve"]
+    environment:
+      JAVA_TOOL_OPTIONS: ${JAVA_TOOL_OPTIONS:--Xmx8g}
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - type: bind
+        source: ./data/routing
+        target: /var/opentripplanner
+        read_only: true
+    restart: "no"
+
+  r5-surface:
+    image: uwo-r5-poc:1.1.7
+    build:
+      context: .
+      dockerfile: docker/r5-poc/Dockerfile
+    container_name: uwo-r5-walking-surface
+    init: true
+    mem_limit: 10g
+    entrypoint: ["python3"]
+    command: ["/app/r5_walking_surface_service.py", "--osm", "/cache/london-area-buffered.osm.pbf"]
+    environment:
+      R5_POC_JAVA_HEAP: 8G
+      XDG_CACHE_HOME: /cache
+    ports:
+      - "127.0.0.1:8091:8091"
+    volumes:
+      - type: bind
+        source: ./data/travel-time-surface-validation/r5/cache
+        target: /cache
+    restart: "no"
+
+volumes:
+  uwo-postgres-dev-data:
+    name: uwo-postgres-dev-data
+    external: true

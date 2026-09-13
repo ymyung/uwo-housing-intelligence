@@ -1,0 +1,7 @@
+{
+  "routingDefaults": {
+    "walkSpeed": 1.33,
+    "bikeSpeed": 4.17,
+    "numItineraries": 5
+  }
+}

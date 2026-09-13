@@ -1,0 +1,18 @@
+services:
+  otp-graph-builder:
+    image: ${OTP_IMAGE:-opentripplanner/opentripplanner:2.6.0}
+    profiles: ["build"]
+    command: ["--build", "--save", "/var/opentripplanner"]
+    volumes:
+      - ./data/routing:/var/opentripplanner
+    mem_limit: 8g
+
+  otp-router:
+    image: ${OTP_IMAGE:-opentripplanner/opentripplanner:2.6.0}
+    command: ["--load", "/var/opentripplanner", "--serve"]
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./data/routing:/var/opentripplanner:ro
+    mem_limit: 8g
+    restart: "no"

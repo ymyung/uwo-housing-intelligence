@@ -1,0 +1,40 @@
+run_root = "data/accessibility-runs"
+
+[routing]
+provider = "opentripplanner"
+base_url = "http://127.0.0.1:8080"
+router_id = "default"
+request_timeout_seconds = 30
+provider_profile = "otp-local-transport-v2"
+
+[inputs]
+properties = "config/accessibility-poc-properties.csv"
+hotspots = "config/accessibility-hotspots.json"
+osm = "data/routing/london-ontario.osm.pbf"
+gtfs = "data/routing/london-transit.gtfs.zip"
+router_config = "data/routing/router-config.json"
+build_manifest = "data/routing/build-manifest.json"
+
+[selection]
+reviewed_only = true
+property_limit = 20
+hotspot_limit = 3
+minimum_transit_samples = 2
+
+[persistence]
+enabled = true
+database_url_env = "ACCESSIBILITY_DATABASE_URL"
+
+[retries]
+max_retries = 2
+initial_delay_seconds = 0.5
+
+[service]
+# Must be a Monday represented by the configured GTFS feed.
+reference_service_week = 2026-09-14
+
+[bounds]
+minimum_latitude = 42.80
+maximum_latitude = 43.20
+minimum_longitude = -81.50
+maximum_longitude = -80.90

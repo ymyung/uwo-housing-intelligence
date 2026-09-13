@@ -1,0 +1,32 @@
+[policy]
+version = "coordinate-selection-v1"
+expected_city_srid = 26917
+minimum_city_match_confidence = 0.98
+near_equivalent_meters = 20.0
+material_geometry_displacement_meters = 20.0
+# Large coordinate moves require explicit human review even when all City
+# identity and geometry gates pass. The completed >100 m review approved only
+# 5 of 21 candidates and retained the other 16 for manual review.
+automatic_city_max_movement_meters = 100.0
+# Versioned benchmark threshold: P90 parcel area across the 497 current exact
+# civic/unit matches with ADDRESS_CONTAINMENT was 6,937.715042 m2 on 2026-08-24.
+large_parcel_area_square_meters = 6937.72
+# The reviewed near-edge cases were 5.42 m and 20.35 m outside their parcels;
+# the next reviewed outside-parcel distance was 46.18 m.
+geoapify_near_parcel_meters = 25.0
+# More than one official municipal point makes a parcel complex unless the
+# matched City point also resolves uniquely to a building.
+simple_parcel_max_municipal_address_count = 1
+accepted_city_address_statuses = ["IA"]
+accepted_city_match_methods = ["EXACT_CIVIC_MATCH", "EXACT_UNIT_MATCH"]
+accepted_dataset_validation_statuses = ["passed"]
+accepted_dataset_import_statuses = ["promoted", "reused"]
+minimum_latitude = 42.75
+maximum_latitude = 43.25
+minimum_longitude = -81.55
+maximum_longitude = -80.85
+
+[campus]
+id = "western-main-campus"
+latitude = 43.0096
+longitude = -81.2737

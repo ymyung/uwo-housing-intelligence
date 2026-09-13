@@ -1,0 +1,60 @@
+[ranking]
+version = "ranking-v1"
+minimum_comparable_count = 8
+minimum_monthly_price = 300.0
+maximum_monthly_price = 10000.0
+required_components = ["value", "campus_access", "transit"]
+system_unavailable_components = ["amenities"]
+
+[component_weights]
+value = 0.45
+campus_access = 0.35
+transit = 0.20
+amenities = 0.0
+
+[value]
+points_per_iqr = 20.0
+minimum_score = 5.0
+maximum_score = 95.0
+
+[campus_access]
+walking_weight = 0.70
+cycling_weight = 0.30
+walking_midpoint_minutes = 30.0
+cycling_midpoint_minutes = 12.0
+shape = 2.0
+
+[transit]
+duration_midpoint_minutes = 30.0
+duration_shape = 2.0
+good_walking_share = 0.25
+poor_walking_share = 0.75
+transfer_penalty_points = 30.0
+maximum_range_ratio = 0.50
+walking_better_than_transit_score = 5.0
+no_route_score = 0.0
+
+[transit.component_weights]
+duration = 0.40
+walking_share = 0.30
+transfers = 0.20
+reliability = 0.10
+
+[transit.period_weights]
+weekday_morning_commute = 0.22
+weekday_midday = 0.15
+weekday_evening_commute = 0.22
+weekday_late_evening = 0.18
+saturday_daytime = 0.13
+sunday_daytime = 0.10
+
+[accessibility]
+hotspot_id = "western-main-campus"
+provider = "opentripplanner"
+provider_profile = "otp-local-transport-v2"
+network_version = "osm-sha256-8a82a46937c8"
+schedule_version = "gtfs-sha256-38986f0b9b42"
+
+[persistence]
+database_url_env = "ACCESSIBILITY_DATABASE_URL"
+run_root = "data/ranking-runs"

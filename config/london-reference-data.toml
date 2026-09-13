@@ -1,0 +1,243 @@
+[london]
+snapshot_root = "data/reference/london"
+validation_root = "data/london-reference-validation"
+native_srid = 26917
+importer_version = "london-reference-v2"
+source_organization = "Corporation of the City of London"
+minimum_x = 460000
+maximum_x = 510000
+minimum_y = 4740000
+maximum_y = 4780000
+
+[datasets.municipal_addresses]
+source_url = "https://maps.london.ca/server/rest/services/OpenData/OpenData_Community/MapServer/0"
+source_dataset_id = "OpenData_Community/MapServer/0"
+geometry_type = "esriGeometryPoint"
+source_id_field = "OBJECTID"
+geometry_family = "point"
+table_name = "municipal_addresses"
+category = "property_resolution"
+refresh_policy = "manual"
+enabled = true
+
+[datasets.building_footprints]
+source_url = "https://maps.london.ca/server/rest/services/OpenData/OpenData_BaseMaps/MapServer/3"
+source_dataset_id = "OpenData_BaseMaps/MapServer/3"
+geometry_type = "esriGeometryPolygon"
+source_id_field = "OBJECTID"
+geometry_family = "polygon"
+table_name = "building_footprints"
+category = "property_resolution"
+refresh_policy = "manual"
+enabled = true
+
+[datasets.parcels]
+source_url = "https://maps.london.ca/server/rest/services/OpenData/OpenData_BaseMaps/MapServer/53"
+source_dataset_id = "OpenData_BaseMaps/MapServer/53"
+geometry_type = "esriGeometryPolygon"
+source_id_field = "OBJECTID"
+geometry_family = "polygon"
+table_name = "parcels"
+category = "property_resolution"
+refresh_policy = "manual"
+enabled = true
+
+[datasets.bicycle_routes]
+source_url = "https://maps.london.ca/server/rest/services/OpenData/OpenData_Transportation/MapServer/20"
+source_dataset_id = "OpenData_Transportation/MapServer/20"
+geometry_type = "esriGeometryPolyline"
+geometry_family = "line"
+source_id_field = "OBJECTID"
+source_last_edit_field = "LastEditDate"
+table_name = "london_bicycle_routes"
+category = "mobility"
+refresh_policy = "manual"
+enabled = true
+required_fields = ["OBJECTID", "GIS_ID", "Street", "GeneralType", "Status"]
+
+[datasets.bicycle_routes.field_mapping]
+gis_id = "GIS_ID"
+route_name = "Street"
+from_street = "FromStreet"
+to_street = "ToStreet"
+facility_type = "GeneralType"
+directionality = "UniorBidirectional"
+travel_direction = "DirofTravel"
+status = "Status"
+left_protection = "LeftSideProtection"
+right_protection = "RightSideProtection"
+is_private = "Private"
+installation_year = "InstallationYear"
+
+[datasets.recreation_paths_multi_use]
+source_url = "https://maps.london.ca/server/rest/services/BikeRoutesAndWalkingTrails/MapServer/7"
+source_dataset_id = "BikeRoutesAndWalkingTrails/MapServer/7"
+geometry_type = "esriGeometryPolyline"
+geometry_family = "line"
+source_id_field = "OBJECTID"
+source_last_edit_field = "LastEditDate"
+table_name = "london_recreation_paths"
+category = "recreation"
+refresh_policy = "manual"
+enabled = true
+required_fields = ["OBJECTID", "GIS_ID", "Type", "PathType", "GIS_FeatureKey"]
+
+[datasets.thames_valley_parkway]
+source_url = "https://maps.london.ca/server/rest/services/BikeRoutesAndWalkingTrails/MapServer/8"
+source_dataset_id = "BikeRoutesAndWalkingTrails/MapServer/8"
+geometry_type = "esriGeometryPolyline"
+geometry_family = "line"
+source_id_field = "OBJECTID"
+source_last_edit_field = "LastEditDate"
+table_name = "london_recreation_paths"
+category = "recreation"
+refresh_policy = "manual"
+enabled = true
+required_fields = ["OBJECTID", "GIS_ID", "Type", "PathType", "GIS_FeatureKey"]
+
+[datasets.walking_trails_unpaved]
+source_url = "https://maps.london.ca/server/rest/services/BikeRoutesAndWalkingTrails/MapServer/9"
+source_dataset_id = "BikeRoutesAndWalkingTrails/MapServer/9"
+geometry_type = "esriGeometryPolyline"
+geometry_family = "line"
+source_id_field = "OBJECTID"
+source_last_edit_field = "LastEditDate"
+table_name = "london_recreation_paths"
+category = "recreation"
+refresh_policy = "manual"
+enabled = true
+required_fields = ["OBJECTID", "GIS_ID", "Type", "PathType", "GIS_FeatureKey"]
+
+[datasets.recreation_paths_multi_use.field_mapping]
+gis_id = "GIS_ID"
+path_name = "GIS_FeatureKey"
+path_type = "PathType"
+source_category = "Type"
+park_category = "NewParkCategory"
+status = "Status"
+source = "Source"
+asset_id = "Asset_ID"
+
+[datasets.thames_valley_parkway.field_mapping]
+gis_id = "GIS_ID"
+path_name = "GIS_FeatureKey"
+path_type = "PathType"
+source_category = "Type"
+park_category = "NewParkCategory"
+status = "Status"
+source = "Source"
+asset_id = "Asset_ID"
+
+[datasets.walking_trails_unpaved.field_mapping]
+gis_id = "GIS_ID"
+path_name = "GIS_FeatureKey"
+path_type = "PathType"
+source_category = "Type"
+park_category = "NewParkCategory"
+status = "Status"
+source = "Source"
+asset_id = "Asset_ID"
+
+[datasets.sidewalks]
+source_url = "https://maps.london.ca/server/rest/services/OpenData/OpenData_Transportation/MapServer/4"
+source_dataset_id = "OpenData_Transportation/MapServer/4"
+geometry_type = "esriGeometryPolyline"
+geometry_family = "line"
+source_id_field = "OBJECTID"
+table_name = "london_sidewalks"
+category = "pedestrian"
+refresh_policy = "manual"
+enabled = true
+required_fields = ["OBJECTID", "Assumed", "Width", "Material"]
+
+[datasets.sidewalks.field_mapping]
+assumed = "Assumed"
+width_text = "Width"
+material = "Material"
+beat = "Beat_Main2"
+
+[datasets.walkways]
+source_url = "https://maps.london.ca/server/rest/services/OpenData/OpenData_Transportation/MapServer/6"
+source_dataset_id = "OpenData_Transportation/MapServer/6"
+geometry_type = "esriGeometryPolyline"
+geometry_family = "line"
+source_id_field = "OBJECTID"
+source_last_edit_field = "Last_Edit_Date"
+table_name = "london_walkways"
+category = "pedestrian"
+refresh_policy = "manual"
+enabled = true
+required_fields = ["OBJECTID", "GIS_ID", "Assumed", "From_Name", "To_Name"]
+
+[datasets.walkways.field_mapping]
+gis_id = "GIS_ID"
+assumed = "Assumed"
+from_number = "From_Num"
+from_name = "From_Name"
+to_number = "To_Num"
+to_name = "To_Name"
+
+[datasets.parks]
+source_url = "https://maps.london.ca/server/rest/services/Basemap_Information/MapServer/2"
+source_dataset_id = "Basemap_Information/MapServer/2"
+geometry_type = "esriGeometryPolygon"
+geometry_family = "polygon"
+source_id_field = "OBJECTID"
+table_name = "london_parks"
+category = "recreation"
+refresh_policy = "manual"
+enabled = true
+required_fields = ["OBJECTID", "GIS_ID", "GIS_FeatureKey", "ParkCategory", "NewParkCategory"]
+
+[datasets.parks.field_mapping]
+gis_id = "GIS_ID"
+park_name = "GIS_FeatureKey"
+address = "Address"
+park_category = "NewParkCategory"
+legacy_park_category = "ParkCategory"
+hectares = "Hectares"
+acres = "Acres"
+park_number = "Pnumber"
+walking_trail_length = "WalkingTrail"
+paved_pathway_length = "PavedPathway"
+total_pathway_length = "TotalPathway"
+
+[datasets.pedestrian_crossovers]
+source_url = "https://maps.london.ca/server/rest/services/OpenData/OpenData_Transportation/MapServer/12"
+source_dataset_id = "OpenData_Transportation/MapServer/12"
+geometry_type = "esriGeometryPoint"
+geometry_family = "point"
+source_id_field = "OBJECTID"
+source_last_edit_field = "LastEditDate"
+table_name = "london_pedestrian_crossovers"
+category = "pedestrian"
+refresh_policy = "manual"
+enabled = true
+required_fields = ["OBJECTID", "GIS_ID", "GIS_FeatureKey", "OnStreet", "Location"]
+
+[datasets.pedestrian_crossovers.field_mapping]
+gis_id = "GIS_ID"
+feature_key = "GIS_FeatureKey"
+street = "OnStreet"
+location_text = "Location"
+year_installed = "YearInstalled"
+inspection_status = "PXOInspected"
+
+[datasets.signalized_intersections]
+source_url = "https://maps.london.ca/server/rest/services/OpenData/OpenData_Transportation/MapServer/14"
+source_dataset_id = "OpenData_Transportation/MapServer/14"
+geometry_type = "esriGeometryPoint"
+geometry_family = "point"
+source_id_field = "OBJECTID"
+table_name = "london_signalized_intersections"
+category = "pedestrian"
+refresh_policy = "manual"
+enabled = true
+required_fields = ["OBJECTID", "GIS_ID", "SignalizedIntersection_ID", "SignalStatus", "SignalType"]
+
+[datasets.signalized_intersections.field_mapping]
+gis_id = "GIS_ID"
+intersection_identifier = "SignalizedIntersection_ID"
+cartographic_subtype = "CartoSubType"
+signal_status = "SignalStatus"
+signal_type = "SignalType"

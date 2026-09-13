@@ -1,0 +1,39 @@
+name: uwo-r5-poc
+
+services:
+  r5-poc:
+    image: uwo-r5-poc:1.1.7
+    build:
+      context: .
+      dockerfile: docker/r5-poc/Dockerfile
+    init: true
+    mem_limit: 10g
+    environment:
+      R5_POC_JAVA_HEAP: 8G
+      XDG_CACHE_HOME: /cache
+    volumes:
+      - type: bind
+        source: ./data/routing
+        target: /inputs
+        read_only: true
+      - type: bind
+        source: ./data/travel-time-surface-validation/r5
+        target: /outputs
+      - type: bind
+        source: ./data/travel-time-surface-validation/acceptance
+        target: /acceptance
+      - type: bind
+        source: ./data/travel-time-surface-validation/r5/cache
+        target: /cache
+    command:
+      - --osm
+      - /cache/london-area-buffered.osm.pbf
+      - --gtfs
+      - /inputs/london-transit.gtfs.zip
+      - --source-osm
+      - /inputs/ontario.osm.pbf
+      - --output
+      - /outputs
+      - --cache-dir
+      - /cache
+      - --inspect-only

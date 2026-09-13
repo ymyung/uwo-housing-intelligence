@@ -1,0 +1,17 @@
+# Copy to operator.toml and customize locally. operator.toml is ignored by Git.
+[remote]
+host = "ssh-alias"
+project_path = "C:\\path\\to\\uwo-housing-website-project"
+python_path = ".venv-scraperai\\Scripts\\python.exe"
+powershell = "powershell.exe"
+ollama_endpoint = "http://127.0.0.1:11434"
+ollama_model = "qwen2.5:14b-instruct"
+minimum_free_gb = 5.0
+
+[local]
+review_root = "data/remote-runs"
+
+[pipeline]
+geocode_cache = "data\\processed\\geocode_cache.csv"
+maximum_retries = 2
+retry_delay_seconds = 1.0

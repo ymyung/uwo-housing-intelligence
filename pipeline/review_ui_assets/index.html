@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UWO Housing Review</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="/assets/review.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Local audited workflow</p>
+        <h1>Housing review desk</h1>
+        <p id="run-label" class="muted"></p>
+      </div>
+      <div class="reviewer-box">
+        <label for="reviewer">Reviewer</label>
+        <input id="reviewer" maxlength="100" autocomplete="name" />
+        <span id="mode-badge" class="badge"></span>
+      </div>
+    </header>
+
+    <section id="summary" class="summary-grid" aria-label="Run summary"></section>
+
+    <main class="workspace">
+      <aside class="queue-panel">
+        <div class="queue-header">
+          <div>
+            <p class="eyebrow">Human queue</p>
+            <h2 id="progress">Loading…</h2>
+          </div>
+          <button id="refresh" class="secondary">Reload</button>
+        </div>
+
+        <div class="filters">
+          <input id="search" type="search" placeholder="ID, address, or URL" />
+          <select id="category"><option value="">All categories</option></select>
+          <select id="field"><option value="">All fields</option></select>
+          <select id="reason"><option value="">All reasons</option></select>
+          <select id="decision-state">
+            <option value="">All decision states</option>
+          </select>
+          <select id="map-ready">
+            <option value="">Any map status</option>
+            <option value="false">Not map-ready</option>
+            <option value="true">Map-ready</option>
+          </select>
+          <label>Max geocode confidence
+            <input id="max-confidence" type="number" min="0" max="1" step="0.05" />
+          </label>
+          <label class="check"><input id="missing-price" type="checkbox" /> Missing monthly price</label>
+        </div>
+
+        <div class="queue-nav">
+          <button id="previous" class="secondary">← Previous</button>
+          <span id="position">0 / 0</span>
+          <button id="next" class="secondary">Next →</button>
+        </div>
+        <ol id="queue" class="queue-list"></ol>
+      </aside>
+
+      <section id="review-panel" class="review-panel" aria-live="polite">
+        <div class="empty-state">Select a listing to begin.</div>
+      </section>
+    </main>
+
+    <template id="issue-template">
+      <article class="issue-card">
+        <div class="issue-heading">
+          <div>
+            <span class="issue-field"></span>
+            <strong class="issue-reason"></strong>
+          </div>
+          <span class="issue-state badge"></span>
+        </div>
+        <div class="evidence-grid"></div>
+        <form class="decision-form">
+          <label>Decision
+            <select name="action">
+              <option value="leave_unresolved">Leave unresolved / save draft note</option>
+              <option value="accept_current">Accept current value</option>
+              <option value="correct_value">Enter corrected value</option>
+              <option value="accepted_as_unknown">Accept as unknown</option>
+              <option value="accept_current_geocode">Accept current geocode</option>
+              <option value="correct_geocode">Correct coordinates</option>
+              <option value="correct_address">Correct address</option>
+              <option value="price_correction">Correct price fields</option>
+              <option value="exclude">Exclude with reason</option>
+            </select>
+          </label>
+          <div class="dynamic-fields"></div>
+          <label>Supporting text or concise evidence
+            <textarea name="supporting_text" rows="2"></textarea>
+          </label>
+          <label>Reviewer note
+            <textarea name="review_note" rows="2"></textarea>
+          </label>
+          <button type="submit" class="primary">Save draft decision</button>
+          <p class="form-status" role="status"></p>
+        </form>
+      </article>
+    </template>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/assets/review.js" defer></script>
+  </body>
+</html>

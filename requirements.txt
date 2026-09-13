@@ -1,0 +1,9 @@
+pandas
+requests
+beautifulsoup4
+tqdm
+playwright
+supabase
+python-dotenv
+fastapi
+uvicorn[standard]

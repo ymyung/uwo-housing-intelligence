@@ -1,0 +1,71 @@
+# Reviewed R5 numerical-surface acceptance policy.
+#
+# This is the reviewed policy consumed by the walking-surface worker, API, and
+# frontend contract. It records the only mode currently supported by bounded
+# acceptance evidence and prevents accidental scope expansion.
+
+[contract]
+version = "r5_surface_acceptance_v1"
+classification = "SURFACE_CONTRACT_READY_WITH_MODE_LIMITATIONS"
+exact_route_authority = "OpenTripPlanner"
+surface_kind = "rounded_numeric_map_estimate"
+validation_artifact_directory = "data/travel-time-surface-validation/acceptance"
+
+[grid]
+version = "london_200m_epsg26917_v1"
+crs = "EPSG:26917"
+cell_size_metres = 200
+cell_count = 14803
+columns = 113
+rows = 131
+min_x = 468327.3781
+min_y = 4742068.8695
+max_x = 490903.1505
+max_y = 4768198.7722
+ordering = "row_major_centroid"
+grid_sha256 = "483932591b94921bdcaa0ae159997e89fc5f2cedd824f97bcfe36260131e9e76"
+
+[surface]
+max_travel_minutes = 120
+display_rounding_seconds = 60
+exclude_unsnapped_cells = true
+
+[origin]
+# The three accepted housing origins snapped within 15 m.  Fifty metres is
+# the reviewed production ceiling; farther points must be rejected, not moved
+# arbitrarily onto the walking graph.
+maximum_snap_distance_metres = 50
+
+[mode.walk]
+enabled = true
+destination_snap_threshold_metres = 400
+expected_grid_retention_percent = 85.368
+sampled_p90_absolute_error_minutes_max = 5.0
+sampled_one_sided_reachability_cases_max = 0
+
+[mode.bicycle]
+enabled = false
+reason = "Acceptance failed: direct-mode parity and reachability divergence exceed the contract bounds."
+
+[mode.transit]
+enabled = false
+reason = "Acceptance failed: six-period parity and reachability divergence exceed the contract bounds."
+reference_windows = [
+  "weekday_morning_commute",
+  "weekday_midday",
+  "weekday_evening_commute",
+  "weekday_late_evening",
+  "saturday_daytime",
+  "sunday_daytime",
+]
+
+[refresh]
+# Rerun acceptance before changing any of these.
+rerun_on = [
+  "osm_sha256",
+  "gtfs_sha256",
+  "r5_version",
+  "grid_definition",
+  "snap_policy",
+  "transit_window_definition",
+]

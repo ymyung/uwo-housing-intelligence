@@ -1,0 +1,2 @@
+# Isolated benchmark dependency.  Do not add this to the application runtime.
+r5py==1.1.7

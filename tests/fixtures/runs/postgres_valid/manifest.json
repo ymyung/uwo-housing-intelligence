@@ -1,0 +1,153 @@
+{
+  "run_id": "postgres_valid",
+  "created_at_utc": "2026-01-01T12:00:00Z",
+  "updated_at_utc": "2026-07-31T00:00:00Z",
+  "status": "completed",
+  "git_commit": null,
+  "git_dirty": false,
+  "hostname": "fixture",
+  "platform": "fixture",
+  "python_version": "fixture",
+  "command": [
+    "fixture"
+  ],
+  "configuration": {
+    "stage0": {
+      "max_pages": 100
+    },
+    "stage1": {
+      "limit": null
+    }
+  },
+  "warnings": [],
+  "errors": [],
+  "canonical_for_import": true,
+  "approval": {
+    "approval_version": 1,
+    "status": "approved",
+    "approved_at_utc": "2026-07-31T00:00:00Z",
+    "approved_by": "fixture-maintenance",
+    "note": "Regenerated approval metadata for versioned workflow",
+    "warnings_acknowledged": false,
+    "acknowledged_warning_conditions": [],
+    "manifest_fingerprint": "03b6f0dc71ccd84afb1fc00b3de1aeba7da52fb4a4a95a08aee03b6775f5dc6b",
+    "canonical_csv_fingerprint": "b39c203fd003a7308f38b004b03bcdc6d7de4622ee71bf837f47a4bbe57916f0",
+    "previous_status": "approved",
+    "history": [
+      {
+        "event": "approved",
+        "at_utc": "2026-01-01T12:00:00Z",
+        "by": "synthetic-fixture-reviewer",
+        "note": "Reviewed synthetic PostgreSQL fixture",
+        "previous_status": null,
+        "manifest_fingerprint": "03b6f0dc71ccd84afb1fc00b3de1aeba7da52fb4a4a95a08aee03b6775f5dc6b",
+        "canonical_csv_fingerprint": "b39c203fd003a7308f38b004b03bcdc6d7de4622ee71bf837f47a4bbe57916f0"
+      },
+      {
+        "event": "reapproved",
+        "at_utc": "2026-07-30T23:02:13.403338Z",
+        "by": "fixture-maintenance",
+        "note": "Regenerated fingerprints after deterministic LF normalization",
+        "previous_status": "approved",
+        "previous_manifest_fingerprint": "03b6f0dc71ccd84afb1fc00b3de1aeba7da52fb4a4a95a08aee03b6775f5dc6b",
+        "previous_canonical_csv_fingerprint": "b39c203fd003a7308f38b004b03bcdc6d7de4622ee71bf837f47a4bbe57916f0",
+        "manifest_fingerprint": "03b6f0dc71ccd84afb1fc00b3de1aeba7da52fb4a4a95a08aee03b6775f5dc6b",
+        "canonical_csv_fingerprint": "b39c203fd003a7308f38b004b03bcdc6d7de4622ee71bf837f47a4bbe57916f0"
+      },
+      {
+        "event": "reapproved",
+        "approval_version": 1,
+        "at_utc": "2026-07-31T00:00:00Z",
+        "by": "fixture-maintenance",
+        "note": "Regenerated approval metadata for versioned workflow",
+        "warnings_acknowledged": false,
+        "acknowledged_warning_conditions": [],
+        "previous_status": "approved",
+        "previous_manifest_fingerprint": "03b6f0dc71ccd84afb1fc00b3de1aeba7da52fb4a4a95a08aee03b6775f5dc6b",
+        "previous_canonical_csv_fingerprint": "b39c203fd003a7308f38b004b03bcdc6d7de4622ee71bf837f47a4bbe57916f0",
+        "manifest_fingerprint": "03b6f0dc71ccd84afb1fc00b3de1aeba7da52fb4a4a95a08aee03b6775f5dc6b",
+        "canonical_csv_fingerprint": "b39c203fd003a7308f38b004b03bcdc6d7de4622ee71bf837f47a4bbe57916f0"
+      }
+    ]
+  },
+  "stages": {
+    "stage0": {
+      "status": "completed",
+      "started_at_utc": "2026-01-01T12:00:00Z",
+      "completed_at_utc": "2026-01-01T12:00:00Z",
+      "input_paths": [],
+      "output_paths": [],
+      "input_rows": null,
+      "output_rows": 1,
+      "error_count": 0,
+      "warning_count": 0,
+      "duration_seconds": 1.0,
+      "metrics": {
+        "pages_requested": 3,
+        "repeated_page_detected": false,
+        "maximum_page_limit_reached": false,
+        "discovered_listing_count": 1
+      }
+    },
+    "stage1": {
+      "status": "completed",
+      "started_at_utc": "2026-01-01T12:00:00Z",
+      "completed_at_utc": "2026-01-01T12:00:00Z",
+      "input_paths": [],
+      "output_paths": [],
+      "input_rows": 1,
+      "output_rows": 1,
+      "error_count": 0,
+      "warning_count": 0,
+      "duration_seconds": 1.0
+    },
+    "stage2": {
+      "status": "completed",
+      "started_at_utc": "2026-01-01T12:00:00Z",
+      "completed_at_utc": "2026-01-01T12:00:00Z",
+      "input_paths": [],
+      "output_paths": [],
+      "input_rows": 1,
+      "output_rows": 1,
+      "error_count": 0,
+      "warning_count": 0,
+      "duration_seconds": 1.0
+    },
+    "manual_fixes": {
+      "status": "completed",
+      "started_at_utc": "2026-01-01T12:00:00Z",
+      "completed_at_utc": "2026-01-01T12:00:00Z",
+      "input_paths": [],
+      "output_paths": [],
+      "input_rows": 1,
+      "output_rows": 1,
+      "error_count": 0,
+      "warning_count": 0,
+      "duration_seconds": 1.0
+    },
+    "stage3": {
+      "status": "completed",
+      "started_at_utc": "2026-01-01T12:00:00Z",
+      "completed_at_utc": "2026-01-01T12:00:00Z",
+      "input_paths": [],
+      "output_paths": [],
+      "input_rows": 1,
+      "output_rows": 1,
+      "error_count": 0,
+      "warning_count": 0,
+      "duration_seconds": 1.0
+    },
+    "stage3_qc": {
+      "status": "completed",
+      "started_at_utc": "2026-01-01T12:00:00Z",
+      "completed_at_utc": "2026-01-01T12:00:00Z",
+      "input_paths": [],
+      "output_paths": [],
+      "input_rows": 1,
+      "output_rows": 1,
+      "error_count": 0,
+      "warning_count": 0,
+      "duration_seconds": 1.0
+    }
+  }
+}

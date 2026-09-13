@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "hotspots": [
+    {
+      "hotspot_id": "western-main-campus",
+      "name": "Western University main campus",
+      "category": "campus",
+      "latitude": 43.0096,
+      "longitude": -81.2737,
+      "address": "1151 Richmond Street, London, Ontario",
+      "is_active": true,
+      "verification_status": "verified",
+      "source": "existing_project_campus_reference",
+      "verified_at": "2026-08-04T00:00:00-04:00"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+[promotion]
+version = "coordinate-promotion-v1"
+coordinate_selection_policy_version = "coordinate-selection-v1"
+coordinate_selection_policy_fingerprint = "1e53391da8c790de34ed4c4db745eed9e8e1402773a96983a9ed1da3b23c429c"
+candidate_run_id = "20260825T021255Z"
+candidate_fingerprint = "788bd845bf25a9bfc9b79c118f784ff0d830aec9e2e66913fb4e9ec4e11b2e70"
+expected_candidate_rows = 681
+expected_city_selected = 218
+expected_conflict_review = 279
+expected_geoapify_retained = 183
+expected_no_usable_coordinate = 1
+maximum_automatic_movement_meters = 100.0
+
+[campus]
+id = "western-main-campus"
+latitude = 43.0096
+longitude = -81.2737
