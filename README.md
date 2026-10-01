@@ -10,7 +10,7 @@ All screenshots use the repository's synthetic accessibility fixture. Reproducti
 
 ### Product overview
 
-![UWO Housing Intelligence discovery map with synthetic listings](docs/images/hero-overview.png)
+![UWO Housing Intelligence discovery map with synthetic listings](docs/images/housing-overview.png)
 
 ### Filtered search
 
@@ -18,7 +18,7 @@ All screenshots use the repository's synthetic accessibility fixture. Reproducti
 
 ### Listing and transit intelligence
 
-![Synthetic listing detail with transit accessibility evidence](docs/images/listing-intelligence.png)
+![Synthetic listing detail with transit accessibility evidence](docs/images/housing-transit-routing.png)
 
 ## Core Technologies
 
