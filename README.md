@@ -38,6 +38,7 @@ Optional infrastructure and generated datasets are required for some routing and
 
 ## Architecture
 
+```mermaid
 flowchart TD
     A["Housing listing<br/>source"] --> B["Collection"]
     B --> C["Structured<br/>extraction"]
@@ -63,6 +64,7 @@ flowchart TD
     J --> P["FastAPI<br/>backend"]
     P --> Q["React<br/>application"]
     Q --> R["Leaflet map, filters,<br/>ranking, comparison"]
+```
 
 
 See [docs/architecture.md](docs/architecture.md) for component boundaries and [docs/data-pipeline.md](docs/data-pipeline.md) for ingestion semantics.
