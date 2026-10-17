@@ -38,29 +38,32 @@ Optional infrastructure and generated datasets are required for some routing and
 
 ## Architecture
 
-```mermaid
 flowchart TD
-    A[Housing listing source] --> B[Collection]
-    B --> C[Structured extraction]
-    C --> D[Deterministic parsing and normalization]
-    D --> E{Missing or ambiguous fields?}
-    E -- Yes --> F[Evidence-gated AI fallback]
-    E -- No --> G[Validation and review]
-    F --> G
-    G --> H[Cached geocoding and location QC]
-    H --> I[Explicit run approval]
-    I --> J[(PostgreSQL and PostGIS)]
+    A["Housing listing<br/>source"] --> B["Collection"]
+    B --> C["Structured<br/>extraction"]
+    C --> D["Deterministic parsing<br/>and normalization"]
+    D --> E{"Missing or<br/>ambiguous fields?"}
 
-    K[Municipal reference data] --> J
-    L[OSM and static GTFS] --> M[OTP routes and accessibility profiles]
-    N[R5 walking analysis] --> O[Travel-time surfaces]
+    E -- Yes --> F["Evidence-gated<br/>AI fallback"]
+    E -- No --> G["Validation<br/>and review"]
+    F --> G
+
+    G --> H["Cached geocoding<br/>and location QC"]
+    H --> I["Explicit run<br/>approval"]
+    I --> J[("PostgreSQL<br/>and PostGIS")]
+
+    K["Municipal<br/>reference data"] --> J
+
+    L["OSM and<br/>static GTFS"] --> M["OTP routes and<br/>accessibility profiles"]
+    N["R5 walking<br/>analysis"] --> O["Travel-time<br/>surfaces"]
+
     M --> J
     O --> J
 
-    J --> P[FastAPI backend]
-    P --> Q[React application]
-    Q --> R[Leaflet map, filters, ranking, comparison]
-```
+    J --> P["FastAPI<br/>backend"]
+    P --> Q["React<br/>application"]
+    Q --> R["Leaflet map, filters,<br/>ranking, comparison"]
+
 
 See [docs/architecture.md](docs/architecture.md) for component boundaries and [docs/data-pipeline.md](docs/data-pipeline.md) for ingestion semantics.
 
