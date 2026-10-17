@@ -40,31 +40,48 @@ Optional infrastructure and generated datasets are required for some routing and
 
 ```mermaid
 flowchart TD
-    A["Housing listing<br/>source"] --> B["Collection"]
-    B --> C["Structured<br/>extraction"]
-    C --> D["Deterministic parsing<br/>and normalization"]
-    D --> E{"Missing or<br/>ambiguous fields?"}
+    A["Housing<br/>source"] --> B["Collection"]
+    B --> C["Extraction"]
+    C --> D["Parsing and<br/>normalization"]
+    D --> E{"Missing<br/>data?"}
 
-    E -- Yes --> F["Evidence-gated<br/>AI fallback"]
-    E -- No --> G["Validation<br/>and review"]
+    E -- Yes --> F["AI fallback"]
+    E -- No --> G["Validation"]
     F --> G
 
-    G --> H["Cached geocoding<br/>and location QC"]
-    H --> I["Explicit run<br/>approval"]
-    I --> J[("PostgreSQL<br/>and PostGIS")]
+    G --> H["Geocoding<br/>and QC"]
+    H --> I["Run approval"]
+    I --> J[("PostgreSQL<br/>PostGIS")]
 
-    K["Municipal<br/>reference data"] --> J
+    K["Municipal<br/>data"] --> J
 
-    L["OSM and<br/>static GTFS"] --> M["OTP routes and<br/>accessibility profiles"]
-    N["R5 walking<br/>analysis"] --> O["Travel-time<br/>surfaces"]
+    L["OSM + GTFS"] --> M["OTP routing"]
+    N["R5 analysis"] --> O["Travel times"]
 
     M --> J
     O --> J
 
-    J --> P["FastAPI<br/>backend"]
-    P --> Q["React<br/>application"]
-    Q --> R["Leaflet map, filters,<br/>ranking, comparison"]
+    J --> P["FastAPI"]
+    P --> Q["React"]
+    Q --> R["Leaflet UI"]
 ```
+
+### Component Details
+
+- **Collection:** Housing listing source ingestion.
+- **Extraction:** Structured extraction of listing information.
+- **Normalization:** Deterministic parsing and normalization.
+- **AI fallback:** Evidence-gated processing of missing or ambiguous fields.
+- **Validation:** Data validation and review.
+- **Geocoding:** Cached geocoding and location quality control.
+- **Run approval:** Explicit approval before database ingestion.
+- **PostgreSQL / PostGIS:** Central spatial database.
+- **Municipal data:** Municipal reference datasets.
+- **OSM + GTFS:** OpenStreetMap and static transit schedules.
+- **OTP routing:** Routes and accessibility profiles.
+- **R5 analysis:** Walking accessibility and travel-time surfaces.
+- **FastAPI:** Application backend.
+- **React / Leaflet:** Interactive map, filters, ranking, and housing comparison.
 
 
 See [docs/architecture.md](docs/architecture.md) for component boundaries and [docs/data-pipeline.md](docs/data-pipeline.md) for ingestion semantics.
